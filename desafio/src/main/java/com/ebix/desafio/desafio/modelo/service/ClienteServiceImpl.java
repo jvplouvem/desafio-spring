@@ -14,7 +14,27 @@ public class ClienteServiceImpl implements ClienteService {
 	private ClienteDAO clienteDAO;
 	
 	@Override
+	public Cliente obterPorId(Long id) {
+		return clienteDAO.obterPorId(id);
+	}
+	
+	@Override
 	public List<Cliente> getClientes() {
 		return clienteDAO.getClientes();
+	}
+	
+	@Override
+	public void criar(Cliente cliente) {
+		clienteDAO.criar(cliente);
+	}
+	
+	@Override
+	public void alterar(Cliente cliente) {
+		clienteDAO.alterar(cliente);
+	}
+	
+	@Override
+	public void excluir(Cliente cliente) {
+		clienteDAO.alterar(cliente);
 	}
 }

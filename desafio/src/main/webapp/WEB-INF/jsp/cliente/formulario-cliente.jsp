@@ -1,13 +1,15 @@
 <html>
 <body>
-	${clientes} -----
+	<a href="/listar">LISTAR</a>
+	
 	</br></br></br>
-	<form method="POST" action="http://localhost:8080/salvar">
+	<form method="POST" action="/${empty cliente? 'criar' : 'alterar'}">
 	<table border="1">
 	<tr>
 		<td>Nome:</td>
 		<td>
-			<input type="text" name="nome">
+			<input type="hidden" name="id" value="${cliente.id}">
+			<input type="text" name="nome" value="${cliente.nome}">
 		</td>
 	</tr>
 	<tr>

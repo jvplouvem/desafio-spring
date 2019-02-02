@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ebix.desafio.desafio.modelo.Cliente;
@@ -15,7 +16,7 @@ import com.ebix.desafio.desafio.modelo.service.ClienteService;
 @Controller
 public class ClienteController {
 	
-	@Autowired(required=true)
+	@Autowired
 	private ClienteService clienteService;
 	
 	@RequestMapping("/")
@@ -23,9 +24,31 @@ public class ClienteController {
       return "/cliente/formulario-cliente";
 	}
 	
-	@RequestMapping(value = "/salvar", method=RequestMethod.POST)
-	public String salvar() {
-      return "/cliente/formulario-cliente";
+	@RequestMapping(value = "/criar", method=RequestMethod.POST)
+	public String criar(@RequestParam("nome") String nome) {
+		Cliente cliente = new Cliente();
+		cliente.setNome(nome);
+		clienteService.criar(cliente);
+		
+		return "/cliente/formulario-cliente";
+	}
+	
+	@RequestMapping(value = "/detalhar", method=RequestMethod.POST)
+	public String detalhar(@RequestParam("id") Long id, @RequestParam("nome") String nome) {
+		Cliente cliente = new Cliente();
+		cliente.setId(id);
+		cliente.setNome(nome);
+		clienteService.alterar(cliente);
+		return "/cliente/formulario-cliente";
+	}
+	
+	@RequestMapping(value = "/alterar", method=RequestMethod.POST)
+	public String alterar(@RequestParam("id") Long id, @RequestParam("nome") String nome) {
+		Cliente cliente = new Cliente();
+		cliente.setId(id);
+		cliente.setNome(nome);
+		clienteService.alterar(cliente);
+		return "/cliente/formulario-cliente";
 	}
 	
 	@RequestMapping(value = "/listar")
@@ -33,7 +56,7 @@ public class ClienteController {
 		List<Cliente> clientes = clienteService.getClientes();
 		
 		model.addObject("clientes", clientes);
-		model.setViewName("/cliente/formulario-client");
+		model.setViewName("/cliente/listagem-cliente");
 		return model;
 	}
 }

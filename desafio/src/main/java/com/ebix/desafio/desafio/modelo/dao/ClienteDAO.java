@@ -8,4 +8,12 @@ public interface ClienteDAO {
 
 	List<Cliente> getClientes();
 
+	void alterar(Cliente cliente);
+
+	void criar(Cliente cliente);
+	
+	void excluir(Long id);
+
+	Cliente obterPorId(Long id);
+
 }
