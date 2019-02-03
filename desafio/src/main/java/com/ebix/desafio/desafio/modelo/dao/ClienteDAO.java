@@ -6,7 +6,7 @@ import com.ebix.desafio.desafio.modelo.Cliente;
 
 public interface ClienteDAO {
 
-	List<Cliente> getClientes();
+	List<Cliente> listar();
 
 	void alterar(Cliente cliente);
 

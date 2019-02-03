@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ebix.desafio.desafio.modelo.Cliente;
 import com.ebix.desafio.desafio.modelo.dao.ClienteDAO;
@@ -20,21 +22,21 @@ public class ClienteServiceImpl implements ClienteService {
 	
 	@Override
 	public List<Cliente> getClientes() {
-		return clienteDAO.getClientes();
+		return clienteDAO.listar();
 	}
 	
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void criar(Cliente cliente) {
 		clienteDAO.criar(cliente);
 	}
 	
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void alterar(Cliente cliente) {
 		clienteDAO.alterar(cliente);
 	}
 	
-	@Override
-	public void excluir(Cliente cliente) {
-		clienteDAO.alterar(cliente);
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void excluir(Long id) {
+		clienteDAO.excluir(id);
 	}
 }

@@ -1,1 +1,1 @@
-erro
+<h2>erro ao processar a requisi&ccedil;&atilde;o</h2>

@@ -30,7 +30,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	public void criar(Cliente cliente) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO cliente ");
+		sql.append("INSERT INTO cliente(nome) ");
 		sql.append("VALUES(?)");
 		
 		jdbcTemplate.update(sql.toString(), cliente.getNome());
@@ -49,7 +49,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	public void excluir(Long id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("DELETE FROM  cliente ");
+		sql.append("DELETE FROM cliente ");
 		sql.append("WHERE id = ? ");
 		
 		jdbcTemplate.update(sql.toString(), id);
@@ -58,15 +58,15 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	public Cliente obterPorId(Long id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM cliente");
+		sql.append("SELECT * FROM cliente ");
 		sql.append("WHERE id = ? ");
 		
-		Cliente cliente = jdbcTemplate.queryForObject(sql.toString(), new ClienteRowMapper());
+		Cliente cliente = jdbcTemplate.queryForObject(sql.toString(), new Object[] {id}, new ClienteRowMapper());
 		return cliente;
 	}
 	
 	@Override
-	public List<Cliente> getClientes() {
+	public List<Cliente> listar() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * FROM cliente");
 		

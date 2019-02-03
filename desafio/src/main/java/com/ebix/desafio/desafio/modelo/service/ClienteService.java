@@ -8,7 +8,7 @@ public interface ClienteService {
 
 	List<Cliente> getClientes();
 
-	void excluir(Cliente cliente);
+	void excluir(Long id);
 
 	void alterar(Cliente cliente);
 

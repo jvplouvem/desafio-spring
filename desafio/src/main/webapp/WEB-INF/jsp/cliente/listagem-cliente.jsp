@@ -2,15 +2,20 @@
 
 <html>
 <body>
+	<a href="/">NOVO CADASTRO</a>	
+	</br></br></br>
+
 	<table border="1">
 	<c:forEach var="cliente" items="${clientes}">
         <tr>
-			<td>
-				<a href="/excluir">EXCLUIR</a>
-				<a href="/editar">ALTERAR</a>
+        	<td>
+				${cliente.nome}
 			</td>
 			<td>
-				${cliente.nome}
+				<a href="/detalhar?id=${cliente.id}">DETALHAR</a>
+			</td>
+			<td>
+				<a href="/excluir?id=${cliente.id}">EXCLUIR</a>
 			</td>
 		</tr> 
     </c:forEach>
