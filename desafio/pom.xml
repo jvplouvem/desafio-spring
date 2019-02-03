@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ebix.desafio</groupId>
-	<artifactId>desafio</artifactId>
+	<artifactId>desafio-spring-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>desafio</name>
-	<description></description>
+	<name>desafio-spring-web</name>
+	<description>desafio-spring-web</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
