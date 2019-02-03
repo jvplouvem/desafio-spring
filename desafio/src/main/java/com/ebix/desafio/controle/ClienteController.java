@@ -35,12 +35,14 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "/alterar", method=RequestMethod.POST)
-	public String alterar(@RequestParam("id") Long id, @RequestParam("nome") String nome) {
+	public ModelAndView alterar(@RequestParam("id") Long id, @RequestParam("nome") String nome, ModelAndView model) {
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
 		cliente.setNome(nome);
 		clienteService.alterar(cliente);
-		return "/cliente/formulario-cliente";
+		model.addObject("cliente", cliente);
+		model.setViewName("/cliente/formulario-cliente");
+		return model;
 	}
 	
 	@RequestMapping(value = "/excluir")
